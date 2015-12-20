@@ -21,17 +21,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.text.SimpleDateFormat;
 
 public class MainActivity extends FragmentActivity implements android.location.LocationListener {
-    //private static final String LATITUDE = "BUNDLE_LA";
-    //private static final String LONGTITUDE = "BUNDLE_LONG";
     String bestProvider;
     int positionCount = 0;
-    float zoom=17;
-    //String Alzheimer = "ALZHEIMER";
+    float zoom = 17;
     private LocationManager locationManager;
     private GoogleMap mMap;
 
-    public static Intent createIntent(Context context, String Latitude, String Longtitude) {
-        String axis = "( " + Latitude + " , " + Longtitude + " )";
+    public static Intent createIntent(Context context, String Latitude, String Longitude) {
+        String axis = "( " + Latitude + " , " + Longitude + " )";
         Intent intent = new Intent();
         intent.setAction("ALZHEIMER");
         intent.putExtra("POSITION", axis);
@@ -49,9 +46,6 @@ public class MainActivity extends FragmentActivity implements android.location.L
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mMap = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
-        /*zoom = 17;
-        LatLng Point = new LatLng(25.033611, 121.565000);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Point, zoom));*/
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         bestProvider = locationManager.getBestProvider(criteria, true);
